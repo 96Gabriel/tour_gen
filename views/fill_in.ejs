@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TourGen - Fill in</title>
+    <link rel="stylesheet" href="css/fill_in.css">
+
+    <% include ./partials/header %>
+
+    <div class="container">
+        <h1 class="display-3">Please, insert the names of the participants: </h1>
+
+        <form method="POST">
+            <% for(var i = 0; i < limit; i++){ %>
+            <br>
+            <label for="p">Participant <%=i + 1%>:</label>
+            <input id="p" type="text" name="participant[<% i %>]" placeholder="Insert participant's name">
+            <br>
+            <% } %>
+            <button type="submit" class="btn btn-success">GENERATE TOURNAMENT NOW!</button>
+        </form>
+
+    </div>
+
+    <% include ./partials/footer %>

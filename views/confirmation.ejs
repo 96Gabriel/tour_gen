@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TourGen - Confirmation</title>
+    <link rel="stylesheet" href="/css/confirmation.css">
+
+    <% include ./partials/header %>
+
+    <div id="container">
+        <h1 id="title">Tournament Details</h1>
+
+        <h2 class="tour-details">Tournament Name: <%= tournament.title %></h2>
+        <h2 class="tour-details">Number of participants: <%= tournament.num_participants %></h2>
+        <h2 class="tour-details">Dispute Method: <%= tournament.dispute_method %></h2>
+        <h2 class="tour-details">Participants:</h2>
+        <ul id="list">
+            <% for(var i = 0; i < tournament.num_participants; i++){ %>
+            <li> <%= tournament.participants[i].name_participant %> </li>
+            <%}%>
+        </ul>
+        
+            <p>What do you want to do?</p>
+            <div id="confirm-button">
+                <a href="/download/<%= tournament._id %>" class="btn btn-success btn-lg">MAKE DRAW!</a>
+            </div>
+
+            <form action="/delete/<%= tournament._id %>" method="POST">
+                <button class="btn btn-danger btn-lg" type="submit" onclick="return deleteIt()">DELETE</button>
+            </form>
+    </div>
+
+    <script src="/js/deletion.js"></script>
+
+    <% include ./partials/footer %>

@@ -1,0 +1,11 @@
+.container{
+    text-align: center;
+}
+
+.container .display-3{
+    font-size: 50px;
+}
+
+.container .btn{
+    margin-top: 15px;
+}

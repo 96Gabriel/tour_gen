@@ -1,0 +1,22 @@
+#container{
+    text-align: center;
+    padding-top: 50px;
+}
+
+#title{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.tour-details{
+    font-size: 25px;
+}
+
+#list li{
+    list-style-type: none;
+    font-size: 18px;
+}
+
+#confirm-button{
+    padding-bottom: 10px;
+}

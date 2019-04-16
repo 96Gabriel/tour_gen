@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TourGen - Download</title>
+    <link rel="stylesheet" href="/css/download.css">
+    <% include ./partials/header %>
+
+    <div id="table">
+        <h1>Tournament Table</h1>
+        <h2 id="title"><%= tournament.title %></h2>
+        <!-- Source: https://stackoverflow.com/questions/2380019/generate-unique-random-numbers-between-1-and-100 -->
+        <% var j = 0;%>
+        <% var array = []; %>
+        <% var num_of_participants = tournament.num_participants; %>
+        <% for(var i = 0; i < num_of_participants/2; i++) {%>
+        <% while(array.length < num_of_participants){ %>
+        <% var r = Math.floor(Math.random()*num_of_participants); %>
+        <% if(array.indexOf(r) === -1) array.push(r); %>
+        <% } %>
+        
+        <p id="dispute_method" hidden><%= tournament.dispute_method %></p>
+
+        <table class="table table-bordered" id="table<%=i+1%>" style="width:200px">
+            <tr>
+                <% var index1 = array[j]; %>
+                <td id="table<%=i+1%>-cell1"> <%= tournament.participants[index1].name_participant %> </td>
+                <td style="width:50px"></td>
+            </tr>
+            <tr>
+                <% var index2 = array[j + 1]; %>
+                <td id="table<%=i+1%>-cell2"> <%= tournament.participants[index2].name_participant %> </td>
+                <td style="width:50px"></td>
+            </tr>
+        </table>
+        <% j += 2; %>
+        <% } %>
+        <a href="#" class="btn btn-success btn-lg" onclick="HTMLtoPDF()">DOWNLOAD</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+
+    <script src="https://unpkg.com/jspdf-autotable@3.1.1/dist/jspdf.plugin.autotable.js"></script>
+
+    <script src="/js/pdf.js"></script>
+
+    <% include ./partials/footer %>
